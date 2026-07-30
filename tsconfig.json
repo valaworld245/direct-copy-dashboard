@@ -20,7 +20,14 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+    "strict": true,
+    /* Merged reference modules were authored under a loose TS config. */
+    "noImplicitAny": false,
+    "noFallthroughCasesInSwitch": false,
     "paths": {
+      "react-router-dom": ["./src/lib/router-compat.tsx"],
+      "@/integrations/supabase/client": ["./src/lib/supabase-client-compat.ts"],
+      "@/integrations/supabase/types": ["./src/lib/supabase-types-compat.ts"],
       "@/*": ["./src/*"]
     }
   }
