@@ -18,9 +18,9 @@ const GROUPS: { title: string; items: Item[] }[] = [
   {
     title: "Menu",
     items: [
-      { to: "/command-center", label: "Overview", icon: LayoutDashboard },
-      { to: "/ams", label: "Tickets", icon: LifeBuoy, accent: true },
-      { to: "/ai", label: "AI Center", icon: Sparkles, accent: true },
+      { to: "/command-center", label: "Dashboard", icon: Home },
+      { to: "/ai", label: "AI Chat", icon: Sparkles, accent: true },
+      { to: "/ams", label: "Tickets", icon: LifeBuoy },
       { to: "/chat", label: "Chat", icon: MessageSquare },
     ],
   },
