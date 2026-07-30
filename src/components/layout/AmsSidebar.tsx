@@ -43,6 +43,8 @@ const GROUPS: { title: string; items: Item[] }[] = [
       { to: "/hall-of-fame", label: "Hall of Fame", icon: Star },
       { to: "/legacy", label: "Legacy", icon: Archive },
       { to: "/collections", label: "Collections", icon: Layers },
+      { to: "/trophy-gallery", label: "Trophy Gallery", icon: Trophy },
+      { to: "/role-showcase", label: "Role Rooms", icon: Star },
     ],
   },
   {
