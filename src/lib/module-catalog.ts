@@ -141,7 +141,7 @@ export const MODULE_CATALOG: ModuleEntry[] = [
 
   // ── Operations & People ──────────────────────────────────────────────
   { id: "task-manager", label: "Task Manager", path: "/task-manager", icon: ListTodo, group: "Operations & People" },
-  { id: "promise-management", label: "Promise Management", path: "/promise-management", icon: ClipboardIcon(), group: "Operations & People" },
+  { id: "promise-management", label: "Promise Management", path: "/promise-management", icon: ListTodo, group: "Operations & People" },
   { id: "promise-tracker", label: "Promise Tracker", path: "/promise-tracker", icon: Timer, group: "Operations & People" },
   { id: "hr-manager", label: "HR Manager", path: "/hr-manager", icon: Users, group: "Operations & People" },
   { id: "hr-dashboard", label: "Employee Center", path: "/hr-dashboard", icon: UserCheck, group: "Operations & People" },
@@ -220,10 +220,6 @@ export const MODULE_CATALOG: ModuleEntry[] = [
   { id: "developer-progression", label: "Developer Progression", path: "/developer-progression", icon: LineChart, group: "Progression" },
   { id: "role-showcase", label: "Role Showcase", path: "/role-showcase", icon: Star, group: "Progression" },
 ];
-
-function ClipboardIcon() {
-  return ListTodo;
-}
 
 export const MODULE_GROUP_ORDER: string[] = Array.from(
   new Set(MODULE_CATALOG.map((m) => m.group)),
