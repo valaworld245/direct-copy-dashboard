@@ -9,7 +9,7 @@ import {
   MODULE_GROUP_ORDER, modulesForRole, searchModules, type ModuleEntry,
 } from "@/lib/module-catalog";
 import {
-  getFavorites, getRecents, markOpened, pushRecent, relativeTime, getOpenedAt, toggleFavorite,
+  getFavorites, getRecents, markOpened, pushRecent, relativeTime, getOpenedAt, toggleFavorite, bumpSessionOpens,
 } from "@/lib/module-prefs";
 import { useModuleKpis } from "@/lib/module-kpis";
 import { getAuthenticatedRole, signOut } from "@/lib/auth-bridge";
@@ -61,6 +61,7 @@ export function ModuleSwitchDashboard() {
   const openModule = useCallback((m: ModuleEntry, path?: string) => {
     setRecents(pushRecent(m.id));
     markOpened(m.id);
+    bumpSessionOpens();
     window.location.assign(path ?? m.path);
   }, []);
 
