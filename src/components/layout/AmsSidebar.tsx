@@ -18,9 +18,9 @@ const GROUPS: { title: string; items: Item[] }[] = [
   {
     title: "Menu",
     items: [
-      { to: "/command-center", label: "Overview", icon: LayoutDashboard },
-      { to: "/ams", label: "Tickets", icon: LifeBuoy, accent: true },
-      { to: "/ai", label: "AI Center", icon: Sparkles, accent: true },
+      { to: "/command-center", label: "Dashboard", icon: Home },
+      { to: "/ai", label: "AI Chat", icon: Sparkles, accent: true },
+      { to: "/ams", label: "Tickets", icon: LifeBuoy },
       { to: "/chat", label: "Chat", icon: MessageSquare },
     ],
   },
@@ -43,6 +43,8 @@ const GROUPS: { title: string; items: Item[] }[] = [
       { to: "/hall-of-fame", label: "Hall of Fame", icon: Star },
       { to: "/legacy", label: "Legacy", icon: Archive },
       { to: "/collections", label: "Collections", icon: Layers },
+      { to: "/trophy-gallery", label: "Trophy Gallery", icon: Trophy },
+      { to: "/role-showcase", label: "Role Rooms", icon: Star },
     ],
   },
   {
@@ -60,6 +62,7 @@ const GROUPS: { title: string; items: Item[] }[] = [
     title: "Engagement",
     items: [
       { to: "/missions", label: "Missions", icon: Target },
+      { to: "/quests", label: "Quests", icon: Target },
       { to: "/challenges", label: "Challenges", icon: Target },
       { to: "/rewards", label: "Rewards", icon: Gift },
       { to: "/claims", label: "Claims", icon: Package },
@@ -71,8 +74,13 @@ const GROUPS: { title: string; items: Item[] }[] = [
       { to: "/passport-vault", label: "Passport Vault", icon: BookMarked },
       { to: "/achievement-vault", label: "Achievement Vault", icon: Trophy },
       { to: "/award-vault", label: "Award Vault", icon: Award },
+      { to: "/badge-vault", label: "Badge Vault", icon: Shield },
+      { to: "/trophy-vault", label: "Trophy Vault", icon: Trophy },
+      { to: "/certificate-vault", label: "Certificate Vault", icon: Ribbon },
+      { to: "/hall-of-fame-vault", label: "Hall of Fame Vault", icon: Star },
       { to: "/membership-vault", label: "Membership Vault", icon: CreditCard },
       { to: "/rank-vault", label: "Rank Vault", icon: Crown },
+      { to: "/reputation-vault", label: "Reputation Vault", icon: Star },
       { to: "/verification-vault", label: "Verification Vault", icon: Shield },
     ],
   },
@@ -89,6 +97,7 @@ const GROUPS: { title: string; items: Item[] }[] = [
       { to: "/notifications", label: "Notifications", icon: Bell },
       { to: "/audit", label: "Audit Logs", icon: ScrollText },
       { to: "/settings", label: "Settings", icon: Settings },
+      
     ],
   },
 ];
@@ -123,9 +132,6 @@ export function AmsSidebar() {
       </div>
 
       <nav className="flex-1 overflow-y-auto scrollbar-thin px-3 py-4 space-y-6">
-        <Section title="Workspace">
-          <NavItem to="/" icon={Home} label="Dashboard Home" active={false} />
-        </Section>
         {GROUPS.map((g) => (
           <Section key={g.title} title={g.title}>
             {g.items.map((it) => (
@@ -138,12 +144,13 @@ export function AmsSidebar() {
                 active={pathname === it.to || pathname.startsWith(`${it.to}/`)}
               />
             ))}
+            {g.title === "Account" && (
+              <NavItem icon={LogOut} label="Logout" onClick={handleLogout} />
+            )}
           </Section>
         ))}
-        <Section title="Session">
-          <NavItem icon={LogOut} label="Logout" onClick={handleLogout} />
-        </Section>
       </nav>
+
 
       <div className="m-3 rounded-xl bg-gradient-brand p-4 text-brand-foreground shadow-glow">
         <div className="text-xs uppercase tracking-wider opacity-80">Upgrade</div>
