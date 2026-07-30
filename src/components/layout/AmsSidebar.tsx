@@ -132,7 +132,6 @@ export function AmsSidebar() {
       </div>
 
       <nav className="flex-1 overflow-y-auto scrollbar-thin px-3 py-4 space-y-6">
-
         {GROUPS.map((g) => (
           <Section key={g.title} title={g.title}>
             {g.items.map((it) => (
@@ -145,12 +144,13 @@ export function AmsSidebar() {
                 active={pathname === it.to || pathname.startsWith(`${it.to}/`)}
               />
             ))}
+            {g.title === "Account" && (
+              <NavItem icon={LogOut} label="Logout" onClick={handleLogout} />
+            )}
           </Section>
         ))}
-        <Section title="Session">
-          <NavItem icon={LogOut} label="Logout" onClick={handleLogout} />
-        </Section>
       </nav>
+
 
       <div className="m-3 rounded-xl bg-gradient-brand p-4 text-brand-foreground shadow-glow">
         <div className="text-xs uppercase tracking-wider opacity-80">Upgrade</div>
