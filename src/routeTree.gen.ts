@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ModuleSwitchRouteImport } from './routes/module-switch'
-import { Route as BossDashboardRouteImport } from './routes/boss-dashboard'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -93,11 +92,6 @@ import { Route as AuthenticatedAwardsIdEditRouteImport } from './routes/_authent
 const ModuleSwitchRoute = ModuleSwitchRouteImport.update({
   id: '/module-switch',
   path: '/module-switch',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BossDashboardRoute = BossDashboardRouteImport.update({
-  id: '/boss-dashboard',
-  path: '/boss-dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplatRoute = SplatRouteImport.update({
@@ -539,7 +533,6 @@ const AuthenticatedAwardsIdEditRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
-  '/boss-dashboard': typeof BossDashboardRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
@@ -620,7 +613,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
-  '/boss-dashboard': typeof BossDashboardRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
@@ -702,7 +694,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/$': typeof SplatRoute
-  '/boss-dashboard': typeof BossDashboardRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/_authenticated/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/_authenticated/achievements': typeof AuthenticatedAchievementsRoute
@@ -785,7 +776,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$'
-    | '/boss-dashboard'
     | '/module-switch'
     | '/achievement-vault'
     | '/achievements'
@@ -866,7 +856,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$'
-    | '/boss-dashboard'
     | '/module-switch'
     | '/achievement-vault'
     | '/achievements'
@@ -947,7 +936,6 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/$'
-    | '/boss-dashboard'
     | '/module-switch'
     | '/_authenticated/achievement-vault'
     | '/_authenticated/achievements'
@@ -1030,7 +1018,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   SplatRoute: typeof SplatRoute
-  BossDashboardRoute: typeof BossDashboardRoute
   ModuleSwitchRoute: typeof ModuleSwitchRoute
   DashboardRoleRoute: typeof DashboardRoleRoute
   VerifyCodeRoute: typeof VerifyCodeRoute
@@ -1043,13 +1030,6 @@ declare module '@tanstack/react-router' {
       path: '/module-switch'
       fullPath: '/module-switch'
       preLoaderRoute: typeof ModuleSwitchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/boss-dashboard': {
-      id: '/boss-dashboard'
-      path: '/boss-dashboard'
-      fullPath: '/boss-dashboard'
-      preLoaderRoute: typeof BossDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$': {
@@ -1790,7 +1770,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   SplatRoute: SplatRoute,
-  BossDashboardRoute: BossDashboardRoute,
   ModuleSwitchRoute: ModuleSwitchRoute,
   DashboardRoleRoute: DashboardRoleRoute,
   VerifyCodeRoute: VerifyCodeRoute,

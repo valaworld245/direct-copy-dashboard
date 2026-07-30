@@ -9,7 +9,7 @@ import {
   MODULE_GROUP_ORDER, modulesForRole, searchModules, type ModuleEntry,
 } from "@/lib/module-catalog";
 import {
-  getFavorites, getRecents, markOpened, pushRecent, relativeTime, getOpenedAt, toggleFavorite, bumpSessionOpens,
+  getFavorites, getRecents, markOpened, pushRecent, relativeTime, getOpenedAt, toggleFavorite,
 } from "@/lib/module-prefs";
 import { useModuleKpis } from "@/lib/module-kpis";
 import { getAuthenticatedRole, signOut } from "@/lib/auth-bridge";
@@ -61,7 +61,6 @@ export function ModuleSwitchDashboard() {
   const openModule = useCallback((m: ModuleEntry, path?: string) => {
     setRecents(pushRecent(m.id));
     markOpened(m.id);
-    bumpSessionOpens();
     window.location.assign(path ?? m.path);
   }, []);
 
@@ -99,7 +98,7 @@ export function ModuleSwitchDashboard() {
         <main className="flex min-w-0 flex-1 flex-col gap-5 p-5">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] text-white/55">
-            <span className="font-semibold text-white/80">Boss Dashboard</span>
+            <span className="font-semibold text-white/80">Module Switch</span>
             {selected && (
               <>
                 <ChevronRight className="h-3 w-3" />
