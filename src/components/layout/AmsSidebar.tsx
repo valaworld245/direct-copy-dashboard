@@ -89,6 +89,7 @@ const GROUPS: { title: string; items: Item[] }[] = [
       { to: "/notifications", label: "Notifications", icon: Bell },
       { to: "/audit", label: "Audit Logs", icon: ScrollText },
       { to: "/settings", label: "Settings", icon: Settings },
+      { to: "/support", label: "Support", icon: LifeBuoy },
     ],
   },
 ];
