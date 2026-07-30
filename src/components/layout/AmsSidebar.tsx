@@ -132,9 +132,7 @@ export function AmsSidebar() {
       </div>
 
       <nav className="flex-1 overflow-y-auto scrollbar-thin px-3 py-4 space-y-6">
-        <Section title="Workspace">
-          <NavItem to="/" icon={Home} label="Dashboard Home" active={false} />
-        </Section>
+
         {GROUPS.map((g) => (
           <Section key={g.title} title={g.title}>
             {g.items.map((it) => (
