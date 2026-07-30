@@ -127,8 +127,8 @@ export function ModuleSwitchSidebar({
       >
         {!compact && (
           <div className="min-w-0">
-            <h1 className="truncate text-base font-bold tracking-tight text-white">Module Switch</h1>
-            <p className="text-[10px] font-medium text-white/60">Workspace launcher</p>
+            <h1 className="truncate text-base font-bold tracking-tight text-white">Boss Dashboard</h1>
+            <p className="text-[10px] font-medium text-white/60">Module command launcher</p>
           </div>
         )}
         <button
