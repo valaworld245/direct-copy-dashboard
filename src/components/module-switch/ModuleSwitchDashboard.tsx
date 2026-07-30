@@ -98,7 +98,7 @@ export function ModuleSwitchDashboard() {
         <main className="flex min-w-0 flex-1 flex-col gap-5 p-5">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] text-white/55">
-            <span className="font-semibold text-white/80">Module Switch</span>
+            <span className="font-semibold text-white/80">Boss Dashboard</span>
             {selected && (
               <>
                 <ChevronRight className="h-3 w-3" />
