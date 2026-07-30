@@ -81,3 +81,40 @@ export function relativeTime(ts: number | null): string {
   if (hr < 24) return `${hr} hr ago`;
   return `${Math.floor(hr / 24)} d ago`;
 }
+
+/** Real activity counters for the current browser session. */
+const SESSION_START_KEY = "sv_session_started_at";
+const SESSION_OPENS_KEY = "sv_session_module_opens";
+
+export function getSessionStart(): number {
+  if (typeof window === "undefined") return Date.now();
+  try {
+    const raw = window.sessionStorage.getItem(SESSION_START_KEY);
+    if (raw) return Number(raw);
+    const now = Date.now();
+    window.sessionStorage.setItem(SESSION_START_KEY, String(now));
+    return now;
+  } catch {
+    return Date.now();
+  }
+}
+
+export function bumpSessionOpens(): number {
+  if (typeof window === "undefined") return 0;
+  try {
+    const next = getSessionOpens() + 1;
+    window.sessionStorage.setItem(SESSION_OPENS_KEY, String(next));
+    return next;
+  } catch {
+    return 0;
+  }
+}
+
+export function getSessionOpens(): number {
+  if (typeof window === "undefined") return 0;
+  try {
+    return Number(window.sessionStorage.getItem(SESSION_OPENS_KEY) ?? 0) || 0;
+  } catch {
+    return 0;
+  }
+}

@@ -9,11 +9,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 import {
-  Activity, Boxes, Clock, Gauge, Layers, Star, UserCircle, Wifi,
+  Activity, Boxes, Clock, Gauge, Layers, Rocket, Star, Timer, UserCircle, Wifi,
   type LucideIcon,
 } from "lucide-react";
 import type { ModuleEntry } from "@/lib/module-catalog";
-import { getOpenedAt, relativeTime } from "@/lib/module-prefs";
+import { getOpenedAt, getSessionOpens, getSessionStart, relativeTime } from "@/lib/module-prefs";
 import type { RoleKey } from "@/lib/roles";
 
 export type ModuleKpiCard = {
@@ -45,6 +45,24 @@ function useConnection() {
   return state;
 }
 
+/** Ticks every second so live metrics keep moving. */
+function useTick(ms = 1000) {
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setTick((t) => t + 1), ms);
+    return () => clearInterval(id);
+  }, [ms]);
+  return tick;
+}
+
+function formatDuration(msTotal: number) {
+  const s = Math.max(0, Math.floor(msTotal / 1000));
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = s % 60;
+  return h > 0 ? `${h}h ${m}m` : m > 0 ? `${m}m ${sec}s` : `${sec}s`;
+}
+
 function useLoadTime() {
   const [ms, setMs] = useState<number | null>(null);
   useEffect(() => {
@@ -66,6 +84,7 @@ export function useModuleKpis(args: {
   const { role, accessible, favorites, recents, selected } = args;
   const conn = useConnection();
   const loadMs = useLoadTime();
+  const tick = useTick(1000);
 
   return useMemo(() => {
     const groupCount = selected
@@ -73,7 +92,32 @@ export function useModuleKpis(args: {
       : 0;
     const openedAt = selected ? getOpenedAt(selected.id) : null;
 
+    const sessionMs = Date.now() - getSessionStart();
+    const opens = getSessionOpens();
+
     const cards: ModuleKpiCard[] = [
+      {
+        id: "session-uptime",
+        label: "Session Uptime",
+        value: formatDuration(sessionMs),
+        subValues: ["Live since this tab opened"],
+        status: "healthy",
+        icon: Timer,
+        source: "Live session clock",
+        urgency: "low",
+        lastUpdate: "now",
+      },
+      {
+        id: "module-opens",
+        label: "Module Launches",
+        value: String(opens),
+        subValues: [opens ? "Counted this session" : "No launches yet this session"],
+        status: opens ? "healthy" : "action",
+        icon: Rocket,
+        source: "Live activity",
+        urgency: "low",
+        lastUpdate: "now",
+      },
       {
         id: "accessible-modules",
         label: "Modules Available",
@@ -194,5 +238,5 @@ export function useModuleKpis(args: {
     }
 
     return cards;
-  }, [role, accessible, favorites, recents, selected, conn.online, conn.type, loadMs]);
+  }, [role, accessible, favorites, recents, selected, conn.online, conn.type, loadMs, tick]);
 }
