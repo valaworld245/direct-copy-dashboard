@@ -196,7 +196,7 @@ export function WorkspaceBar() {
   if (!meta || pathname === "/command-center") return null;
 
   return (
-    <div className="sticky top-16 z-20 -mx-6 mb-4 border-b border-border/60 bg-background/85 px-6 py-2 backdrop-blur-md">
+    <div className="sticky top-0 z-20 -mx-6 mb-4 border-b border-border/60 bg-background/85 px-6 py-2 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-2">
         {/* breadcrumb — every crumb is a real Link */}
         <nav
