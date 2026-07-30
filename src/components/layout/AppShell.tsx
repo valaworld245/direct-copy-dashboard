@@ -20,11 +20,10 @@ export function AppShell({ children }: { children: ReactNode }) {
           onOpenAIChat={() => navigate({ to: "/ai" })}
         />
         <main className="flex-1 px-4 md:px-6 py-5 space-y-5 overflow-x-hidden">
-          <div className="max-w-[1600px] w-full mx-auto">
-            <WorkspaceBar />
-            {children}
-          </div>
+          <WorkspaceBar />
+          {children}
         </main>
+
       </div>
     </div>
   );
