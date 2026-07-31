@@ -15,6 +15,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as VerifyCodeRouteImport } from './routes/verify.$code'
 import { Route as DashboardRoleRouteImport } from './routes/dashboard.$role'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as AuthenticatedXpCrystalVaultRouteImport } from './routes/_authenticated/xp-crystal-vault'
 import { Route as AuthenticatedXpRouteImport } from './routes/_authenticated/xp'
 import { Route as AuthenticatedVerificationVaultRouteImport } from './routes/_authenticated/verification-vault'
@@ -116,6 +117,11 @@ const VerifyCodeRoute = VerifyCodeRouteImport.update({
 const DashboardRoleRoute = DashboardRoleRouteImport.update({
   id: '/dashboard/$role',
   path: '/dashboard/$role',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedXpCrystalVaultRoute =
@@ -584,6 +590,7 @@ export interface FileRoutesByFullPath {
   '/verification-vault': typeof AuthenticatedVerificationVaultRoute
   '/xp': typeof AuthenticatedXpRoute
   '/xp-crystal-vault': typeof AuthenticatedXpCrystalVaultRoute
+  '/api/chat': typeof ApiChatRoute
   '/dashboard/$role': typeof DashboardRoleRoute
   '/verify/$code': typeof VerifyCodeRoute
   '/ams/$id': typeof AuthenticatedAmsIdRoute
@@ -663,6 +670,7 @@ export interface FileRoutesByTo {
   '/verification-vault': typeof AuthenticatedVerificationVaultRoute
   '/xp': typeof AuthenticatedXpRoute
   '/xp-crystal-vault': typeof AuthenticatedXpCrystalVaultRoute
+  '/api/chat': typeof ApiChatRoute
   '/dashboard/$role': typeof DashboardRoleRoute
   '/verify/$code': typeof VerifyCodeRoute
   '/ams/$id': typeof AuthenticatedAmsIdRoute
@@ -745,6 +753,7 @@ export interface FileRoutesById {
   '/_authenticated/verification-vault': typeof AuthenticatedVerificationVaultRoute
   '/_authenticated/xp': typeof AuthenticatedXpRoute
   '/_authenticated/xp-crystal-vault': typeof AuthenticatedXpCrystalVaultRoute
+  '/api/chat': typeof ApiChatRoute
   '/dashboard/$role': typeof DashboardRoleRoute
   '/verify/$code': typeof VerifyCodeRoute
   '/_authenticated/ams/$id': typeof AuthenticatedAmsIdRoute
@@ -827,6 +836,7 @@ export interface FileRouteTypes {
     | '/verification-vault'
     | '/xp'
     | '/xp-crystal-vault'
+    | '/api/chat'
     | '/dashboard/$role'
     | '/verify/$code'
     | '/ams/$id'
@@ -906,6 +916,7 @@ export interface FileRouteTypes {
     | '/verification-vault'
     | '/xp'
     | '/xp-crystal-vault'
+    | '/api/chat'
     | '/dashboard/$role'
     | '/verify/$code'
     | '/ams/$id'
@@ -987,6 +998,7 @@ export interface FileRouteTypes {
     | '/_authenticated/verification-vault'
     | '/_authenticated/xp'
     | '/_authenticated/xp-crystal-vault'
+    | '/api/chat'
     | '/dashboard/$role'
     | '/verify/$code'
     | '/_authenticated/ams/$id'
@@ -1019,6 +1031,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   SplatRoute: typeof SplatRoute
   ModuleSwitchRoute: typeof ModuleSwitchRoute
+  ApiChatRoute: typeof ApiChatRoute
   DashboardRoleRoute: typeof DashboardRoleRoute
   VerifyCodeRoute: typeof VerifyCodeRoute
 }
@@ -1065,6 +1078,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard/$role'
       fullPath: '/dashboard/$role'
       preLoaderRoute: typeof DashboardRoleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/xp-crystal-vault': {
@@ -1771,19 +1791,10 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   SplatRoute: SplatRoute,
   ModuleSwitchRoute: ModuleSwitchRoute,
+  ApiChatRoute: ApiChatRoute,
   DashboardRoleRoute: DashboardRoleRoute,
   VerifyCodeRoute: VerifyCodeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
