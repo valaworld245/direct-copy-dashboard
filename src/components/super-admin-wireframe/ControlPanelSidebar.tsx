@@ -91,13 +91,18 @@ const ROLE_CATEGORIES = [
 
 type RoleId = typeof ROLE_CATEGORIES[number]['id'];
 
+export const SIDEBAR_ROLE_IDS = ROLE_CATEGORIES.map((r) => r.id) as readonly RoleId[];
+
 interface ControlPanelSidebarProps {
   activeRole?: RoleId;
   onRoleSelect: (roleId: RoleId) => void;
   collapsed?: boolean;
   onToggleCollapse?: () => void;
   onLogout: () => void;
+  /** When provided, only these button ids are rendered (role based access). */
+  visibleRoleIds?: readonly string[];
 }
+
 
 // ===== COMPACT ROLE BUTTON (ICON + ANIMATED LABEL) =====
 const RoleButton = memo<{
