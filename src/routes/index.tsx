@@ -1,5 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
+import { sidebarRouteFor } from "@/lib/sidebar-routes";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -55,7 +56,7 @@ import { ValaAiAgent } from "@/components/vala-ai/ValaAiAgent";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Master Control Panel — Boss Cockpit" },
+      { title: "Master Control Panel — Software Vala Boss Cockpit" },
       {
         name: "description",
         content:
@@ -156,6 +157,7 @@ function CockpitBanner() {
 
 
 function Index() {
+  const navigate = useNavigate();
   const [activeRole, setActiveRole] = useState<RoleId>("boss_owner");
   const [selectedKpi, setSelectedKpi] = useState<string | null>(null);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -173,9 +175,11 @@ function Index() {
             onToggleCollapse={() => setSidebarCollapsed((v) => !v)}
             onRoleSelect={(roleId) => {
               setActiveRole(roleId);
-              toast.success(`Switched to ${roleId.replace(/_/g, " ")}`);
+              const to = sidebarRouteFor(roleId);
+              toast.success(`Opening ${roleId.replace(/_/g, " ")}`);
+              navigate({ to });
             }}
-            onLogout={() => toast.info("Logging out...")}
+            onLogout={() => navigate({ to: "/module-switch" })}
           />
         </div>
 
