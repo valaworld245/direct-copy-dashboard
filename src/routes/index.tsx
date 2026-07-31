@@ -47,8 +47,10 @@ import {
 import ControlPanelSidebar, {
   SIDEBAR_WIDTH,
   SIDEBAR_COLLAPSED_WIDTH,
+  SIDEBAR_ROLE_IDS,
   type RoleId,
 } from "@/components/super-admin-wireframe/ControlPanelSidebar";
+import { useSidebarVisibility } from "@/hooks/useSidebarVisibility";
 import { CommandCenter } from "@/components/command-center/CommandCenter";
 import { KPIGrid, KPIBox } from "@/components/boss/KPIGrid";
 import { ValaAiAgent } from "@/components/vala-ai/ValaAiAgent";
@@ -161,6 +163,7 @@ function Index() {
   const [activeRole, setActiveRole] = useState<RoleId>("boss_owner");
   const [selectedKpi, setSelectedKpi] = useState<string | null>(null);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const { visibleIds, canAccess, loading: rolesLoading } = useSidebarVisibility(SIDEBAR_ROLE_IDS);
 
   return (
     <TooltipProvider>
@@ -173,7 +176,12 @@ function Index() {
             activeRole={activeRole}
             collapsed={sidebarCollapsed}
             onToggleCollapse={() => setSidebarCollapsed((v) => !v)}
+            visibleRoleIds={rolesLoading ? [] : visibleIds}
             onRoleSelect={(roleId) => {
+              if (!canAccess(roleId)) {
+                toast.error("You don't have access to this module");
+                return;
+              }
               setActiveRole(roleId);
               const to = sidebarRouteFor(roleId);
               toast.success(`Opening ${roleId.replace(/_/g, " ")}`);
