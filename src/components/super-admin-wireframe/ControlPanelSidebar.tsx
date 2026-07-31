@@ -181,14 +181,20 @@ export const ControlPanelSidebar = memo<ControlPanelSidebarProps>(({
   collapsed = false,
   onToggleCollapse,
   onLogout,
+  visibleRoleIds,
 }) => {
   const [hovered, setHovered] = useState(false);
   const expanded = !collapsed || hovered;
   const compact = !expanded;
 
+  const roles = visibleRoleIds
+    ? ROLE_CATEGORIES.filter((r) => visibleRoleIds.includes(r.id))
+    : ROLE_CATEGORIES;
+
   const handleRoleClick = useCallback((roleId: RoleId) => {
     onRoleSelect(roleId);
   }, [onRoleSelect]);
+
 
   return (
     <motion.aside
