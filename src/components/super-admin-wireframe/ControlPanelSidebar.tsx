@@ -231,7 +231,7 @@ export const ControlPanelSidebar = memo<ControlPanelSidebarProps>(({
 
       {/* ALL MODULES */}
       <nav className="flex-1 flex flex-col px-2 py-1.5" style={{ gap: '3px' }}>
-        {ROLE_CATEGORIES.map((role) => (
+        {roles.map((role) => (
           <RoleButton
             key={role.id}
             role={role}
