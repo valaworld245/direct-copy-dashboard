@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SeoManagerRouteImport } from './routes/seo-manager'
 import { Route as ResellerManagerRouteImport } from './routes/reseller-manager'
 import { Route as ModuleSwitchRouteImport } from './routes/module-switch'
 import { Route as MarketplaceManagerRouteImport } from './routes/marketplace-manager'
@@ -95,6 +96,11 @@ import { Route as AuthenticatedAwardsLibrariesBadgesRouteImport } from './routes
 import { Route as AuthenticatedAwardsLibrariesAchievementsRouteImport } from './routes/_authenticated/awards.libraries.achievements'
 import { Route as AuthenticatedAwardsIdEditRouteImport } from './routes/_authenticated/awards.$id.edit'
 
+const SeoManagerRoute = SeoManagerRouteImport.update({
+  id: '/seo-manager',
+  path: '/seo-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResellerManagerRoute = ResellerManagerRouteImport.update({
   id: '/reseller-manager',
   path: '/reseller-manager',
@@ -575,6 +581,7 @@ export interface FileRoutesByFullPath {
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/reseller-manager': typeof ResellerManagerRoute
+  '/seo-manager': typeof SeoManagerRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
   '/ai': typeof AuthenticatedAiRoute
@@ -661,6 +668,7 @@ export interface FileRoutesByTo {
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/reseller-manager': typeof ResellerManagerRoute
+  '/seo-manager': typeof SeoManagerRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
   '/ai': typeof AuthenticatedAiRoute
@@ -748,6 +756,7 @@ export interface FileRoutesById {
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/reseller-manager': typeof ResellerManagerRoute
+  '/seo-manager': typeof SeoManagerRoute
   '/_authenticated/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/_authenticated/achievements': typeof AuthenticatedAchievementsRoute
   '/_authenticated/ai': typeof AuthenticatedAiRoute
@@ -836,6 +845,7 @@ export interface FileRouteTypes {
     | '/marketplace-manager'
     | '/module-switch'
     | '/reseller-manager'
+    | '/seo-manager'
     | '/achievement-vault'
     | '/achievements'
     | '/ai'
@@ -922,6 +932,7 @@ export interface FileRouteTypes {
     | '/marketplace-manager'
     | '/module-switch'
     | '/reseller-manager'
+    | '/seo-manager'
     | '/achievement-vault'
     | '/achievements'
     | '/ai'
@@ -1008,6 +1019,7 @@ export interface FileRouteTypes {
     | '/marketplace-manager'
     | '/module-switch'
     | '/reseller-manager'
+    | '/seo-manager'
     | '/_authenticated/achievement-vault'
     | '/_authenticated/achievements'
     | '/_authenticated/ai'
@@ -1096,6 +1108,7 @@ export interface RootRouteChildren {
   MarketplaceManagerRoute: typeof MarketplaceManagerRoute
   ModuleSwitchRoute: typeof ModuleSwitchRoute
   ResellerManagerRoute: typeof ResellerManagerRoute
+  SeoManagerRoute: typeof SeoManagerRoute
   ApiChatRoute: typeof ApiChatRoute
   DashboardRoleRoute: typeof DashboardRoleRoute
   VerifyCodeRoute: typeof VerifyCodeRoute
@@ -1103,6 +1116,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/seo-manager': {
+      id: '/seo-manager'
+      path: '/seo-manager'
+      fullPath: '/seo-manager'
+      preLoaderRoute: typeof SeoManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reseller-manager': {
       id: '/reseller-manager'
       path: '/reseller-manager'
@@ -1896,6 +1916,7 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceManagerRoute: MarketplaceManagerRoute,
   ModuleSwitchRoute: ModuleSwitchRoute,
   ResellerManagerRoute: ResellerManagerRoute,
+  SeoManagerRoute: SeoManagerRoute,
   ApiChatRoute: ApiChatRoute,
   DashboardRoleRoute: DashboardRoleRoute,
   VerifyCodeRoute: VerifyCodeRoute,

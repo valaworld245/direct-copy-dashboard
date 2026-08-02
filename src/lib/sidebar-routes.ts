@@ -26,9 +26,11 @@ export const SIDEBAR_ROUTES: Record<string, string> = {
   sales_support_manager: "/sales-support-manager",
   customer_support_management: "/client-success",
   // GRADE 4
-  franchise_manager: "/franchise/dashboard",
+  franchise_manager: "/franchise-manager",
   reseller_manager: "/reseller-manager",
   influencer_manager: "/influencer-manager",
+  affiliate_manager: "/affiliate-manager",
+  marketplace_manager: "/marketplace-manager",
   influencer_dashboard: "/influencer-dashboard",
   // GRADE 5
   continent_super_admin: "/continent/dashboard",

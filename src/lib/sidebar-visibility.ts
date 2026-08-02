@@ -48,6 +48,8 @@ export const SIDEBAR_VISIBILITY: Record<string, string[]> = {
   reseller_manager: ["reseller", "area_manager"],
   influencer_manager: ["marketing_manager", "area_manager"],
   influencer_dashboard: ["influencer"],
+  affiliate_manager: ["marketing_manager", "affiliate_manager", "area_manager"],
+  marketplace_manager: ["marketplace_manager", "marketing_manager", "performance_manager"],
 
   // GRADE 5
   continent_super_admin: ["area_manager"],
