@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ModuleSwitchRouteImport } from './routes/module-switch'
+import { Route as MarketplaceManagerRouteImport } from './routes/marketplace-manager'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -93,6 +94,11 @@ import { Route as AuthenticatedAwardsIdEditRouteImport } from './routes/_authent
 const ModuleSwitchRoute = ModuleSwitchRouteImport.update({
   id: '/module-switch',
   path: '/module-switch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceManagerRoute = MarketplaceManagerRouteImport.update({
+  id: '/marketplace-manager',
+  path: '/marketplace-manager',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplatRoute = SplatRouteImport.update({
@@ -539,6 +545,7 @@ const AuthenticatedAwardsIdEditRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
@@ -620,6 +627,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
@@ -702,6 +710,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/$': typeof SplatRoute
+  '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/_authenticated/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/_authenticated/achievements': typeof AuthenticatedAchievementsRoute
@@ -785,6 +794,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$'
+    | '/marketplace-manager'
     | '/module-switch'
     | '/achievement-vault'
     | '/achievements'
@@ -866,6 +876,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$'
+    | '/marketplace-manager'
     | '/module-switch'
     | '/achievement-vault'
     | '/achievements'
@@ -947,6 +958,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/$'
+    | '/marketplace-manager'
     | '/module-switch'
     | '/_authenticated/achievement-vault'
     | '/_authenticated/achievements'
@@ -1030,6 +1042,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   SplatRoute: typeof SplatRoute
+  MarketplaceManagerRoute: typeof MarketplaceManagerRoute
   ModuleSwitchRoute: typeof ModuleSwitchRoute
   ApiChatRoute: typeof ApiChatRoute
   DashboardRoleRoute: typeof DashboardRoleRoute
@@ -1043,6 +1056,13 @@ declare module '@tanstack/react-router' {
       path: '/module-switch'
       fullPath: '/module-switch'
       preLoaderRoute: typeof ModuleSwitchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace-manager': {
+      id: '/marketplace-manager'
+      path: '/marketplace-manager'
+      fullPath: '/marketplace-manager'
+      preLoaderRoute: typeof MarketplaceManagerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$': {
@@ -1790,6 +1810,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   SplatRoute: SplatRoute,
+  MarketplaceManagerRoute: MarketplaceManagerRoute,
   ModuleSwitchRoute: ModuleSwitchRoute,
   ApiChatRoute: ApiChatRoute,
   DashboardRoleRoute: DashboardRoleRoute,
