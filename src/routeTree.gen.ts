@@ -9,7 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SeoManagerRouteImport } from './routes/seo-manager'
+import { Route as ResellerManagerRouteImport } from './routes/reseller-manager'
 import { Route as ModuleSwitchRouteImport } from './routes/module-switch'
+import { Route as MarketplaceManagerRouteImport } from './routes/marketplace-manager'
+import { Route as InfluencerManagerRouteImport } from './routes/influencer-manager'
+import { Route as FranchiseManagerRouteImport } from './routes/franchise-manager'
+import { Route as AffiliateManagerRouteImport } from './routes/affiliate-manager'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -90,9 +96,39 @@ import { Route as AuthenticatedAwardsLibrariesBadgesRouteImport } from './routes
 import { Route as AuthenticatedAwardsLibrariesAchievementsRouteImport } from './routes/_authenticated/awards.libraries.achievements'
 import { Route as AuthenticatedAwardsIdEditRouteImport } from './routes/_authenticated/awards.$id.edit'
 
+const SeoManagerRoute = SeoManagerRouteImport.update({
+  id: '/seo-manager',
+  path: '/seo-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResellerManagerRoute = ResellerManagerRouteImport.update({
+  id: '/reseller-manager',
+  path: '/reseller-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ModuleSwitchRoute = ModuleSwitchRouteImport.update({
   id: '/module-switch',
   path: '/module-switch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceManagerRoute = MarketplaceManagerRouteImport.update({
+  id: '/marketplace-manager',
+  path: '/marketplace-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InfluencerManagerRoute = InfluencerManagerRouteImport.update({
+  id: '/influencer-manager',
+  path: '/influencer-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FranchiseManagerRoute = FranchiseManagerRouteImport.update({
+  id: '/franchise-manager',
+  path: '/franchise-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AffiliateManagerRoute = AffiliateManagerRouteImport.update({
+  id: '/affiliate-manager',
+  path: '/affiliate-manager',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplatRoute = SplatRouteImport.update({
@@ -539,7 +575,13 @@ const AuthenticatedAwardsIdEditRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/affiliate-manager': typeof AffiliateManagerRoute
+  '/franchise-manager': typeof FranchiseManagerRoute
+  '/influencer-manager': typeof InfluencerManagerRoute
+  '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
+  '/reseller-manager': typeof ResellerManagerRoute
+  '/seo-manager': typeof SeoManagerRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
   '/ai': typeof AuthenticatedAiRoute
@@ -620,7 +662,13 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/affiliate-manager': typeof AffiliateManagerRoute
+  '/franchise-manager': typeof FranchiseManagerRoute
+  '/influencer-manager': typeof InfluencerManagerRoute
+  '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
+  '/reseller-manager': typeof ResellerManagerRoute
+  '/seo-manager': typeof SeoManagerRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
   '/ai': typeof AuthenticatedAiRoute
@@ -702,7 +750,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/$': typeof SplatRoute
+  '/affiliate-manager': typeof AffiliateManagerRoute
+  '/franchise-manager': typeof FranchiseManagerRoute
+  '/influencer-manager': typeof InfluencerManagerRoute
+  '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
+  '/reseller-manager': typeof ResellerManagerRoute
+  '/seo-manager': typeof SeoManagerRoute
   '/_authenticated/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/_authenticated/achievements': typeof AuthenticatedAchievementsRoute
   '/_authenticated/ai': typeof AuthenticatedAiRoute
@@ -785,7 +839,13 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$'
+    | '/affiliate-manager'
+    | '/franchise-manager'
+    | '/influencer-manager'
+    | '/marketplace-manager'
     | '/module-switch'
+    | '/reseller-manager'
+    | '/seo-manager'
     | '/achievement-vault'
     | '/achievements'
     | '/ai'
@@ -866,7 +926,13 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$'
+    | '/affiliate-manager'
+    | '/franchise-manager'
+    | '/influencer-manager'
+    | '/marketplace-manager'
     | '/module-switch'
+    | '/reseller-manager'
+    | '/seo-manager'
     | '/achievement-vault'
     | '/achievements'
     | '/ai'
@@ -947,7 +1013,13 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/$'
+    | '/affiliate-manager'
+    | '/franchise-manager'
+    | '/influencer-manager'
+    | '/marketplace-manager'
     | '/module-switch'
+    | '/reseller-manager'
+    | '/seo-manager'
     | '/_authenticated/achievement-vault'
     | '/_authenticated/achievements'
     | '/_authenticated/ai'
@@ -1030,7 +1102,13 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   SplatRoute: typeof SplatRoute
+  AffiliateManagerRoute: typeof AffiliateManagerRoute
+  FranchiseManagerRoute: typeof FranchiseManagerRoute
+  InfluencerManagerRoute: typeof InfluencerManagerRoute
+  MarketplaceManagerRoute: typeof MarketplaceManagerRoute
   ModuleSwitchRoute: typeof ModuleSwitchRoute
+  ResellerManagerRoute: typeof ResellerManagerRoute
+  SeoManagerRoute: typeof SeoManagerRoute
   ApiChatRoute: typeof ApiChatRoute
   DashboardRoleRoute: typeof DashboardRoleRoute
   VerifyCodeRoute: typeof VerifyCodeRoute
@@ -1038,11 +1116,53 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/seo-manager': {
+      id: '/seo-manager'
+      path: '/seo-manager'
+      fullPath: '/seo-manager'
+      preLoaderRoute: typeof SeoManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reseller-manager': {
+      id: '/reseller-manager'
+      path: '/reseller-manager'
+      fullPath: '/reseller-manager'
+      preLoaderRoute: typeof ResellerManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/module-switch': {
       id: '/module-switch'
       path: '/module-switch'
       fullPath: '/module-switch'
       preLoaderRoute: typeof ModuleSwitchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace-manager': {
+      id: '/marketplace-manager'
+      path: '/marketplace-manager'
+      fullPath: '/marketplace-manager'
+      preLoaderRoute: typeof MarketplaceManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/influencer-manager': {
+      id: '/influencer-manager'
+      path: '/influencer-manager'
+      fullPath: '/influencer-manager'
+      preLoaderRoute: typeof InfluencerManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/franchise-manager': {
+      id: '/franchise-manager'
+      path: '/franchise-manager'
+      fullPath: '/franchise-manager'
+      preLoaderRoute: typeof FranchiseManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/affiliate-manager': {
+      id: '/affiliate-manager'
+      path: '/affiliate-manager'
+      fullPath: '/affiliate-manager'
+      preLoaderRoute: typeof AffiliateManagerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$': {
@@ -1790,7 +1910,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   SplatRoute: SplatRoute,
+  AffiliateManagerRoute: AffiliateManagerRoute,
+  FranchiseManagerRoute: FranchiseManagerRoute,
+  InfluencerManagerRoute: InfluencerManagerRoute,
+  MarketplaceManagerRoute: MarketplaceManagerRoute,
   ModuleSwitchRoute: ModuleSwitchRoute,
+  ResellerManagerRoute: ResellerManagerRoute,
+  SeoManagerRoute: SeoManagerRoute,
   ApiChatRoute: ApiChatRoute,
   DashboardRoleRoute: DashboardRoleRoute,
   VerifyCodeRoute: VerifyCodeRoute,

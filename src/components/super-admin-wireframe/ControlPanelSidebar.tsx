@@ -25,7 +25,7 @@ import {
   Star, Scale, ListTodo, DollarSign, Code2, 
   Megaphone, HeartHandshake, Users, LogOut, Zap, Timer, MonitorPlay, 
   Home, Shield, Settings, Search, User, UserCircle, Boxes,
-  PanelLeftClose, PanelLeftOpen
+  PanelLeftClose, PanelLeftOpen, Store
 } from "lucide-react";
 // ScrollArea removed - NO SCROLLING in Control Panel
 
@@ -72,6 +72,8 @@ const ROLE_CATEGORIES = [
   { id: 'reseller_manager', label: 'Reseller Manager', icon: Handshake },
   { id: 'influencer_manager', label: 'Influencer Manager', icon: Users },
   { id: 'influencer_dashboard', label: 'Influencer Dashboard', icon: User },
+  { id: 'affiliate_manager', label: 'Affiliate Manager', icon: Handshake },
+  { id: 'marketplace_manager', label: 'Marketplace Manager', icon: Store },
   // GRADE 5
   { id: 'continent_super_admin', label: 'Continent Admin', icon: Globe2 },
   { id: 'country_head', label: 'Country Admin', icon: Flag },
