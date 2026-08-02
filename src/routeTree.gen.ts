@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ResellerManagerRouteImport } from './routes/reseller-manager'
 import { Route as ModuleSwitchRouteImport } from './routes/module-switch'
 import { Route as MarketplaceManagerRouteImport } from './routes/marketplace-manager'
 import { Route as AffiliateManagerRouteImport } from './routes/affiliate-manager'
@@ -92,6 +93,11 @@ import { Route as AuthenticatedAwardsLibrariesBadgesRouteImport } from './routes
 import { Route as AuthenticatedAwardsLibrariesAchievementsRouteImport } from './routes/_authenticated/awards.libraries.achievements'
 import { Route as AuthenticatedAwardsIdEditRouteImport } from './routes/_authenticated/awards.$id.edit'
 
+const ResellerManagerRoute = ResellerManagerRouteImport.update({
+  id: '/reseller-manager',
+  path: '/reseller-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ModuleSwitchRoute = ModuleSwitchRouteImport.update({
   id: '/module-switch',
   path: '/module-switch',
@@ -554,6 +560,7 @@ export interface FileRoutesByFullPath {
   '/affiliate-manager': typeof AffiliateManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
+  '/reseller-manager': typeof ResellerManagerRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
   '/ai': typeof AuthenticatedAiRoute
@@ -637,6 +644,7 @@ export interface FileRoutesByTo {
   '/affiliate-manager': typeof AffiliateManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
+  '/reseller-manager': typeof ResellerManagerRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
   '/ai': typeof AuthenticatedAiRoute
@@ -721,6 +729,7 @@ export interface FileRoutesById {
   '/affiliate-manager': typeof AffiliateManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
+  '/reseller-manager': typeof ResellerManagerRoute
   '/_authenticated/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/_authenticated/achievements': typeof AuthenticatedAchievementsRoute
   '/_authenticated/ai': typeof AuthenticatedAiRoute
@@ -806,6 +815,7 @@ export interface FileRouteTypes {
     | '/affiliate-manager'
     | '/marketplace-manager'
     | '/module-switch'
+    | '/reseller-manager'
     | '/achievement-vault'
     | '/achievements'
     | '/ai'
@@ -889,6 +899,7 @@ export interface FileRouteTypes {
     | '/affiliate-manager'
     | '/marketplace-manager'
     | '/module-switch'
+    | '/reseller-manager'
     | '/achievement-vault'
     | '/achievements'
     | '/ai'
@@ -972,6 +983,7 @@ export interface FileRouteTypes {
     | '/affiliate-manager'
     | '/marketplace-manager'
     | '/module-switch'
+    | '/reseller-manager'
     | '/_authenticated/achievement-vault'
     | '/_authenticated/achievements'
     | '/_authenticated/ai'
@@ -1057,6 +1069,7 @@ export interface RootRouteChildren {
   AffiliateManagerRoute: typeof AffiliateManagerRoute
   MarketplaceManagerRoute: typeof MarketplaceManagerRoute
   ModuleSwitchRoute: typeof ModuleSwitchRoute
+  ResellerManagerRoute: typeof ResellerManagerRoute
   ApiChatRoute: typeof ApiChatRoute
   DashboardRoleRoute: typeof DashboardRoleRoute
   VerifyCodeRoute: typeof VerifyCodeRoute
@@ -1064,6 +1077,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/reseller-manager': {
+      id: '/reseller-manager'
+      path: '/reseller-manager'
+      fullPath: '/reseller-manager'
+      preLoaderRoute: typeof ResellerManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/module-switch': {
       id: '/module-switch'
       path: '/module-switch'
@@ -1833,6 +1853,7 @@ const rootRouteChildren: RootRouteChildren = {
   AffiliateManagerRoute: AffiliateManagerRoute,
   MarketplaceManagerRoute: MarketplaceManagerRoute,
   ModuleSwitchRoute: ModuleSwitchRoute,
+  ResellerManagerRoute: ResellerManagerRoute,
   ApiChatRoute: ApiChatRoute,
   DashboardRoleRoute: DashboardRoleRoute,
   VerifyCodeRoute: VerifyCodeRoute,
