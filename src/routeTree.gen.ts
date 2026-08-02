@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ModuleSwitchRouteImport } from './routes/module-switch'
 import { Route as MarketplaceManagerRouteImport } from './routes/marketplace-manager'
+import { Route as AffiliateManagerRouteImport } from './routes/affiliate-manager'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
@@ -99,6 +100,11 @@ const ModuleSwitchRoute = ModuleSwitchRouteImport.update({
 const MarketplaceManagerRoute = MarketplaceManagerRouteImport.update({
   id: '/marketplace-manager',
   path: '/marketplace-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AffiliateManagerRoute = AffiliateManagerRouteImport.update({
+  id: '/affiliate-manager',
+  path: '/affiliate-manager',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SplatRoute = SplatRouteImport.update({
@@ -545,6 +551,7 @@ const AuthenticatedAwardsIdEditRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/affiliate-manager': typeof AffiliateManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
@@ -627,6 +634,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/affiliate-manager': typeof AffiliateManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
@@ -710,6 +718,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/$': typeof SplatRoute
+  '/affiliate-manager': typeof AffiliateManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/_authenticated/achievement-vault': typeof AuthenticatedAchievementVaultRoute
@@ -794,6 +803,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$'
+    | '/affiliate-manager'
     | '/marketplace-manager'
     | '/module-switch'
     | '/achievement-vault'
@@ -876,6 +886,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$'
+    | '/affiliate-manager'
     | '/marketplace-manager'
     | '/module-switch'
     | '/achievement-vault'
@@ -958,6 +969,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/$'
+    | '/affiliate-manager'
     | '/marketplace-manager'
     | '/module-switch'
     | '/_authenticated/achievement-vault'
@@ -1042,6 +1054,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   SplatRoute: typeof SplatRoute
+  AffiliateManagerRoute: typeof AffiliateManagerRoute
   MarketplaceManagerRoute: typeof MarketplaceManagerRoute
   ModuleSwitchRoute: typeof ModuleSwitchRoute
   ApiChatRoute: typeof ApiChatRoute
@@ -1063,6 +1076,13 @@ declare module '@tanstack/react-router' {
       path: '/marketplace-manager'
       fullPath: '/marketplace-manager'
       preLoaderRoute: typeof MarketplaceManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/affiliate-manager': {
+      id: '/affiliate-manager'
+      path: '/affiliate-manager'
+      fullPath: '/affiliate-manager'
+      preLoaderRoute: typeof AffiliateManagerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$': {
@@ -1810,6 +1830,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   SplatRoute: SplatRoute,
+  AffiliateManagerRoute: AffiliateManagerRoute,
   MarketplaceManagerRoute: MarketplaceManagerRoute,
   ModuleSwitchRoute: ModuleSwitchRoute,
   ApiChatRoute: ApiChatRoute,
