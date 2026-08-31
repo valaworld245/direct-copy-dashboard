@@ -65,7 +65,7 @@ export const Route = createFileRoute("/dashboard/$role")({
 function DashboardPage() {
   const { role } = Route.useParams();
   const search = Route.useSearch();
-  const navigate = useNavigate();
+  const navigate = Route.useNavigate();
   const [activeModule, setActiveModule] = useState<string | null>(null);
   const cfg = ROLES[role as RoleKey];
   const kpiTone = search.kpiTone as KpiTone;
