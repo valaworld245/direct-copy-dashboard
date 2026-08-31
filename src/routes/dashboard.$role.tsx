@@ -65,7 +65,7 @@ export const Route = createFileRoute("/dashboard/$role")({
 function DashboardPage() {
   const { role } = Route.useParams();
   const search = Route.useSearch();
-  const navigate = useNavigate();
+  const navigate = Route.useNavigate();
   const [activeModule, setActiveModule] = useState<string | null>(null);
   const cfg = ROLES[role as RoleKey];
   const kpiTone = search.kpiTone as KpiTone;
@@ -74,14 +74,14 @@ function DashboardPage() {
     navigate({
       to: "/dashboard/$role",
       params: { role },
-      search: (prev: { kpiTone: string; kpiSort: string }) => ({ ...prev, kpiTone: t }),
+      search: (prev) => ({ ...prev, kpiTone: t }),
       replace: true,
     });
   const setKpiSort = (s: KpiSort) =>
     navigate({
       to: "/dashboard/$role",
       params: { role },
-      search: (prev: { kpiTone: string; kpiSort: string }) => ({ ...prev, kpiSort: s }),
+      search: (prev) => ({ ...prev, kpiSort: s }),
       replace: true,
     });
 
