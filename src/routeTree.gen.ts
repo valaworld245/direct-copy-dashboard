@@ -13,8 +13,10 @@ import { Route as SeoManagerRouteImport } from './routes/seo-manager'
 import { Route as ResellerManagerRouteImport } from './routes/reseller-manager'
 import { Route as ModuleSwitchRouteImport } from './routes/module-switch'
 import { Route as MarketplaceManagerRouteImport } from './routes/marketplace-manager'
+import { Route as LeadManagerRouteImport } from './routes/lead-manager'
 import { Route as InfluencerManagerRouteImport } from './routes/influencer-manager'
 import { Route as FranchiseManagerRouteImport } from './routes/franchise-manager'
+import { Route as CrmManagerRouteImport } from './routes/crm-manager'
 import { Route as AffiliateManagerRouteImport } from './routes/affiliate-manager'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
@@ -116,6 +118,11 @@ const MarketplaceManagerRoute = MarketplaceManagerRouteImport.update({
   path: '/marketplace-manager',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LeadManagerRoute = LeadManagerRouteImport.update({
+  id: '/lead-manager',
+  path: '/lead-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InfluencerManagerRoute = InfluencerManagerRouteImport.update({
   id: '/influencer-manager',
   path: '/influencer-manager',
@@ -124,6 +131,11 @@ const InfluencerManagerRoute = InfluencerManagerRouteImport.update({
 const FranchiseManagerRoute = FranchiseManagerRouteImport.update({
   id: '/franchise-manager',
   path: '/franchise-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrmManagerRoute = CrmManagerRouteImport.update({
+  id: '/crm-manager',
+  path: '/crm-manager',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AffiliateManagerRoute = AffiliateManagerRouteImport.update({
@@ -576,8 +588,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/affiliate-manager': typeof AffiliateManagerRoute
+  '/crm-manager': typeof CrmManagerRoute
   '/franchise-manager': typeof FranchiseManagerRoute
   '/influencer-manager': typeof InfluencerManagerRoute
+  '/lead-manager': typeof LeadManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/reseller-manager': typeof ResellerManagerRoute
@@ -663,8 +677,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/affiliate-manager': typeof AffiliateManagerRoute
+  '/crm-manager': typeof CrmManagerRoute
   '/franchise-manager': typeof FranchiseManagerRoute
   '/influencer-manager': typeof InfluencerManagerRoute
+  '/lead-manager': typeof LeadManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/reseller-manager': typeof ResellerManagerRoute
@@ -751,8 +767,10 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/$': typeof SplatRoute
   '/affiliate-manager': typeof AffiliateManagerRoute
+  '/crm-manager': typeof CrmManagerRoute
   '/franchise-manager': typeof FranchiseManagerRoute
   '/influencer-manager': typeof InfluencerManagerRoute
+  '/lead-manager': typeof LeadManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/reseller-manager': typeof ResellerManagerRoute
@@ -840,8 +858,10 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/affiliate-manager'
+    | '/crm-manager'
     | '/franchise-manager'
     | '/influencer-manager'
+    | '/lead-manager'
     | '/marketplace-manager'
     | '/module-switch'
     | '/reseller-manager'
@@ -927,8 +947,10 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/affiliate-manager'
+    | '/crm-manager'
     | '/franchise-manager'
     | '/influencer-manager'
+    | '/lead-manager'
     | '/marketplace-manager'
     | '/module-switch'
     | '/reseller-manager'
@@ -1014,8 +1036,10 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/$'
     | '/affiliate-manager'
+    | '/crm-manager'
     | '/franchise-manager'
     | '/influencer-manager'
+    | '/lead-manager'
     | '/marketplace-manager'
     | '/module-switch'
     | '/reseller-manager'
@@ -1103,8 +1127,10 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   SplatRoute: typeof SplatRoute
   AffiliateManagerRoute: typeof AffiliateManagerRoute
+  CrmManagerRoute: typeof CrmManagerRoute
   FranchiseManagerRoute: typeof FranchiseManagerRoute
   InfluencerManagerRoute: typeof InfluencerManagerRoute
+  LeadManagerRoute: typeof LeadManagerRoute
   MarketplaceManagerRoute: typeof MarketplaceManagerRoute
   ModuleSwitchRoute: typeof ModuleSwitchRoute
   ResellerManagerRoute: typeof ResellerManagerRoute
@@ -1144,6 +1170,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceManagerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lead-manager': {
+      id: '/lead-manager'
+      path: '/lead-manager'
+      fullPath: '/lead-manager'
+      preLoaderRoute: typeof LeadManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/influencer-manager': {
       id: '/influencer-manager'
       path: '/influencer-manager'
@@ -1156,6 +1189,13 @@ declare module '@tanstack/react-router' {
       path: '/franchise-manager'
       fullPath: '/franchise-manager'
       preLoaderRoute: typeof FranchiseManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crm-manager': {
+      id: '/crm-manager'
+      path: '/crm-manager'
+      fullPath: '/crm-manager'
+      preLoaderRoute: typeof CrmManagerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/affiliate-manager': {
@@ -1911,8 +1951,10 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   SplatRoute: SplatRoute,
   AffiliateManagerRoute: AffiliateManagerRoute,
+  CrmManagerRoute: CrmManagerRoute,
   FranchiseManagerRoute: FranchiseManagerRoute,
   InfluencerManagerRoute: InfluencerManagerRoute,
+  LeadManagerRoute: LeadManagerRoute,
   MarketplaceManagerRoute: MarketplaceManagerRoute,
   ModuleSwitchRoute: ModuleSwitchRoute,
   ResellerManagerRoute: ResellerManagerRoute,
