@@ -25,6 +25,7 @@ import {
   Star, Scale, ListTodo, DollarSign, Code2, 
   Megaphone, HeartHandshake, Users, LogOut, Zap, Timer, MonitorPlay, 
   Home, Shield, Settings, Search, User, UserCircle, Boxes,
+  Contact, ShoppingCart, Receipt, RefreshCw, KeyRound, LifeBuoy,
   PanelLeftClose, PanelLeftOpen, Store
 } from "lucide-react";
 // ScrollArea removed - NO SCROLLING in Control Panel
@@ -65,6 +66,12 @@ const ROLE_CATEGORIES = [
   { id: 'marketing_management', label: 'Marketing Manager', icon: Megaphone },
   { id: 'seo_manager', label: 'SEO Manager', icon: Search },
   { id: 'lead_manager', label: 'Lead Manager', icon: Target },
+  { id: 'crm_manager', label: 'CRM Manager', icon: Contact },
+  { id: 'order_manager', label: 'Order Manager', icon: ShoppingCart },
+  { id: 'billing_manager', label: 'Billing Manager', icon: Receipt },
+  { id: 'subscription_manager', label: 'Subscription Manager', icon: RefreshCw },
+  { id: 'license_manager', label: 'License Manager', icon: KeyRound },
+  { id: 'ticket_manager', label: 'Ticket Manager', icon: LifeBuoy },
   { id: 'sales_support_manager', label: 'Sales & Support', icon: Headphones },
   { id: 'customer_support_management', label: 'Customer Support', icon: HeartHandshake },
   // GRADE 4

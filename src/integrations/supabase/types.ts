@@ -85,6 +85,125 @@ export type Database = {
         }
         Relationships: []
       }
+      crm_contacts: {
+        Row: {
+          company: string
+          contact_name: string
+          created_at: string
+          email: string
+          id: string
+          lifetime_value: number
+          owner: string | null
+          phone: string | null
+          stage: string
+          updated_at: string
+        }
+        Insert: {
+          company: string
+          contact_name: string
+          created_at?: string
+          email: string
+          id?: string
+          lifetime_value?: number
+          owner?: string | null
+          phone?: string | null
+          stage?: string
+          updated_at?: string
+        }
+        Update: {
+          company?: string
+          contact_name?: string
+          created_at?: string
+          email?: string
+          id?: string
+          lifetime_value?: number
+          owner?: string | null
+          phone?: string | null
+          stage?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      crm_deals: {
+        Row: {
+          amount: number
+          contact_id: string | null
+          created_at: string
+          expected_close: string | null
+          id: string
+          probability: number
+          stage: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          amount?: number
+          contact_id?: string | null
+          created_at?: string
+          expected_close?: string | null
+          id?: string
+          probability?: number
+          stage?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          amount?: number
+          contact_id?: string | null
+          created_at?: string
+          expected_close?: string | null
+          id?: string
+          probability?: number
+          stage?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crm_deals_contact_id_fkey"
+            columns: ["contact_id"]
+            isOneToOne: false
+            referencedRelation: "crm_contacts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      demo_requests: {
+        Row: {
+          company: string
+          contact_name: string
+          created_at: string
+          id: string
+          outcome: string | null
+          product: string
+          scheduled_at: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          company: string
+          contact_name: string
+          created_at?: string
+          id?: string
+          outcome?: string | null
+          product: string
+          scheduled_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          company?: string
+          contact_name?: string
+          created_at?: string
+          id?: string
+          outcome?: string | null
+          product?: string
+          scheduled_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       franchise_accounts: {
         Row: {
           created_at: string
@@ -230,6 +349,162 @@ export type Database = {
         }
         Relationships: []
       }
+      invoices: {
+        Row: {
+          amount: number
+          created_at: string
+          customer: string
+          due_date: string | null
+          id: string
+          invoice_number: string
+          status: string
+          tax: number
+          updated_at: string
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          customer: string
+          due_date?: string | null
+          id?: string
+          invoice_number: string
+          status?: string
+          tax?: number
+          updated_at?: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          customer?: string
+          due_date?: string | null
+          id?: string
+          invoice_number?: string
+          status?: string
+          tax?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          assigned_to: string | null
+          country: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          phone: string | null
+          score: number
+          source: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          country?: string | null
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          phone?: string | null
+          score?: number
+          source?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          assigned_to?: string | null
+          country?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          phone?: string | null
+          score?: number
+          source?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      licenses: {
+        Row: {
+          created_at: string
+          customer: string
+          expires_on: string | null
+          id: string
+          license_key: string
+          license_type: string
+          product: string
+          seats: number
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          customer: string
+          expires_on?: string | null
+          id?: string
+          license_key: string
+          license_type?: string
+          product: string
+          seats?: number
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          customer?: string
+          expires_on?: string | null
+          id?: string
+          license_key?: string
+          license_type?: string
+          product?: string
+          seats?: number
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      marketing_campaigns: {
+        Row: {
+          budget: number
+          channel: string
+          conversions: number
+          created_at: string
+          id: string
+          leads: number
+          name: string
+          spend: number
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          budget?: number
+          channel: string
+          conversions?: number
+          created_at?: string
+          id?: string
+          leads?: number
+          name: string
+          spend?: number
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          budget?: number
+          channel?: string
+          conversions?: number
+          created_at?: string
+          id?: string
+          leads?: number
+          name?: string
+          spend?: number
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       marketplace_listings: {
         Row: {
           category: string
@@ -333,6 +608,42 @@ export type Database = {
           name?: string
           rating?: number
           status?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          amount: number
+          created_at: string
+          customer: string
+          id: string
+          order_number: string
+          payment_status: string
+          product: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          amount?: number
+          created_at?: string
+          customer: string
+          id?: string
+          order_number: string
+          payment_status?: string
+          product: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          customer?: string
+          id?: string
+          order_number?: string
+          payment_status?: string
+          product?: string
+          status?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -507,6 +818,78 @@ export type Database = {
           id?: string
           owner_team?: string | null
           status?: string
+        }
+        Relationships: []
+      }
+      subscriptions: {
+        Row: {
+          amount: number
+          billing_cycle: string
+          created_at: string
+          customer: string
+          id: string
+          plan: string
+          renews_on: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          amount?: number
+          billing_cycle?: string
+          created_at?: string
+          customer: string
+          id?: string
+          plan: string
+          renews_on?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          amount?: number
+          billing_cycle?: string
+          created_at?: string
+          customer?: string
+          id?: string
+          plan?: string
+          renews_on?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      support_tickets: {
+        Row: {
+          assigned_agent: string | null
+          created_at: string
+          id: string
+          priority: string
+          requester: string
+          status: string
+          subject: string
+          ticket_number: string
+          updated_at: string
+        }
+        Insert: {
+          assigned_agent?: string | null
+          created_at?: string
+          id?: string
+          priority?: string
+          requester: string
+          status?: string
+          subject: string
+          ticket_number: string
+          updated_at?: string
+        }
+        Update: {
+          assigned_agent?: string | null
+          created_at?: string
+          id?: string
+          priority?: string
+          requester?: string
+          status?: string
+          subject?: string
+          ticket_number?: string
+          updated_at?: string
         }
         Relationships: []
       }
