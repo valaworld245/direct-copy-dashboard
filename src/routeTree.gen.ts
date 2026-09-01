@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SeoManagerRouteImport } from './routes/seo-manager'
 import { Route as ResellerManagerRouteImport } from './routes/reseller-manager'
+import { Route as OrderManagerRouteImport } from './routes/order-manager'
 import { Route as ModuleSwitchRouteImport } from './routes/module-switch'
 import { Route as MarketplaceManagerRouteImport } from './routes/marketplace-manager'
 import { Route as LeadManagerRouteImport } from './routes/lead-manager'
@@ -106,6 +107,11 @@ const SeoManagerRoute = SeoManagerRouteImport.update({
 const ResellerManagerRoute = ResellerManagerRouteImport.update({
   id: '/reseller-manager',
   path: '/reseller-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderManagerRoute = OrderManagerRouteImport.update({
+  id: '/order-manager',
+  path: '/order-manager',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ModuleSwitchRoute = ModuleSwitchRouteImport.update({
@@ -594,6 +600,7 @@ export interface FileRoutesByFullPath {
   '/lead-manager': typeof LeadManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
+  '/order-manager': typeof OrderManagerRoute
   '/reseller-manager': typeof ResellerManagerRoute
   '/seo-manager': typeof SeoManagerRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
@@ -683,6 +690,7 @@ export interface FileRoutesByTo {
   '/lead-manager': typeof LeadManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
+  '/order-manager': typeof OrderManagerRoute
   '/reseller-manager': typeof ResellerManagerRoute
   '/seo-manager': typeof SeoManagerRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
@@ -773,6 +781,7 @@ export interface FileRoutesById {
   '/lead-manager': typeof LeadManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
+  '/order-manager': typeof OrderManagerRoute
   '/reseller-manager': typeof ResellerManagerRoute
   '/seo-manager': typeof SeoManagerRoute
   '/_authenticated/achievement-vault': typeof AuthenticatedAchievementVaultRoute
@@ -864,6 +873,7 @@ export interface FileRouteTypes {
     | '/lead-manager'
     | '/marketplace-manager'
     | '/module-switch'
+    | '/order-manager'
     | '/reseller-manager'
     | '/seo-manager'
     | '/achievement-vault'
@@ -953,6 +963,7 @@ export interface FileRouteTypes {
     | '/lead-manager'
     | '/marketplace-manager'
     | '/module-switch'
+    | '/order-manager'
     | '/reseller-manager'
     | '/seo-manager'
     | '/achievement-vault'
@@ -1042,6 +1053,7 @@ export interface FileRouteTypes {
     | '/lead-manager'
     | '/marketplace-manager'
     | '/module-switch'
+    | '/order-manager'
     | '/reseller-manager'
     | '/seo-manager'
     | '/_authenticated/achievement-vault'
@@ -1133,6 +1145,7 @@ export interface RootRouteChildren {
   LeadManagerRoute: typeof LeadManagerRoute
   MarketplaceManagerRoute: typeof MarketplaceManagerRoute
   ModuleSwitchRoute: typeof ModuleSwitchRoute
+  OrderManagerRoute: typeof OrderManagerRoute
   ResellerManagerRoute: typeof ResellerManagerRoute
   SeoManagerRoute: typeof SeoManagerRoute
   ApiChatRoute: typeof ApiChatRoute
@@ -1154,6 +1167,13 @@ declare module '@tanstack/react-router' {
       path: '/reseller-manager'
       fullPath: '/reseller-manager'
       preLoaderRoute: typeof ResellerManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order-manager': {
+      id: '/order-manager'
+      path: '/order-manager'
+      fullPath: '/order-manager'
+      preLoaderRoute: typeof OrderManagerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/module-switch': {
@@ -1957,6 +1977,7 @@ const rootRouteChildren: RootRouteChildren = {
   LeadManagerRoute: LeadManagerRoute,
   MarketplaceManagerRoute: MarketplaceManagerRoute,
   ModuleSwitchRoute: ModuleSwitchRoute,
+  OrderManagerRoute: OrderManagerRoute,
   ResellerManagerRoute: ResellerManagerRoute,
   SeoManagerRoute: SeoManagerRoute,
   ApiChatRoute: ApiChatRoute,
