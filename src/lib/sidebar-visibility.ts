@@ -39,7 +39,13 @@ export const SIDEBAR_VISIBILITY: Record<string, string[]> = {
   // GRADE 3
   marketing_management: ["marketing_manager"],
   seo_manager: ["seo_manager", "marketing_manager"],
-  lead_manager: ["lead_manager", "marketing_manager"],
+  lead_manager: ["lead_manager", "marketing_manager", "crm_manager"],
+  crm_manager: ["crm_manager", "lead_manager", "support", "client_success", "marketing_manager"],
+  order_manager: ["order_manager", "finance_manager", "marketplace_manager", "support"],
+  billing_manager: ["billing_manager", "finance_manager"],
+  subscription_manager: ["subscription_manager", "finance_manager", "billing_manager"],
+  license_manager: ["license_manager", "finance_manager", "developer", "support"],
+  ticket_manager: ["ticket_manager", "support", "client_success", "assist_manager"],
   sales_support_manager: ["support", "lead_manager", "client_success"],
   customer_support_management: ["client_success", "support"],
 
