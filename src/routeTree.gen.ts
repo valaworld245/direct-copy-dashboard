@@ -9,14 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TicketManagerRouteImport } from './routes/ticket-manager'
+import { Route as SubscriptionManagerRouteImport } from './routes/subscription-manager'
 import { Route as SeoManagerRouteImport } from './routes/seo-manager'
 import { Route as ResellerManagerRouteImport } from './routes/reseller-manager'
 import { Route as OrderManagerRouteImport } from './routes/order-manager'
 import { Route as ModuleSwitchRouteImport } from './routes/module-switch'
 import { Route as MarketplaceManagerRouteImport } from './routes/marketplace-manager'
+import { Route as MarketingManagerRouteImport } from './routes/marketing-manager'
+import { Route as LicenseManagerRouteImport } from './routes/license-manager'
 import { Route as LeadManagerRouteImport } from './routes/lead-manager'
 import { Route as InfluencerManagerRouteImport } from './routes/influencer-manager'
 import { Route as FranchiseManagerRouteImport } from './routes/franchise-manager'
+import { Route as DemoManagerRouteImport } from './routes/demo-manager'
 import { Route as CrmManagerRouteImport } from './routes/crm-manager'
 import { Route as BillingManagerRouteImport } from './routes/billing-manager'
 import { Route as AffiliateManagerRouteImport } from './routes/affiliate-manager'
@@ -100,6 +105,16 @@ import { Route as AuthenticatedAwardsLibrariesBadgesRouteImport } from './routes
 import { Route as AuthenticatedAwardsLibrariesAchievementsRouteImport } from './routes/_authenticated/awards.libraries.achievements'
 import { Route as AuthenticatedAwardsIdEditRouteImport } from './routes/_authenticated/awards.$id.edit'
 
+const TicketManagerRoute = TicketManagerRouteImport.update({
+  id: '/ticket-manager',
+  path: '/ticket-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubscriptionManagerRoute = SubscriptionManagerRouteImport.update({
+  id: '/subscription-manager',
+  path: '/subscription-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SeoManagerRoute = SeoManagerRouteImport.update({
   id: '/seo-manager',
   path: '/seo-manager',
@@ -125,6 +140,16 @@ const MarketplaceManagerRoute = MarketplaceManagerRouteImport.update({
   path: '/marketplace-manager',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketingManagerRoute = MarketingManagerRouteImport.update({
+  id: '/marketing-manager',
+  path: '/marketing-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LicenseManagerRoute = LicenseManagerRouteImport.update({
+  id: '/license-manager',
+  path: '/license-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LeadManagerRoute = LeadManagerRouteImport.update({
   id: '/lead-manager',
   path: '/lead-manager',
@@ -138,6 +163,11 @@ const InfluencerManagerRoute = InfluencerManagerRouteImport.update({
 const FranchiseManagerRoute = FranchiseManagerRouteImport.update({
   id: '/franchise-manager',
   path: '/franchise-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoManagerRoute = DemoManagerRouteImport.update({
+  id: '/demo-manager',
+  path: '/demo-manager',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CrmManagerRoute = CrmManagerRouteImport.update({
@@ -602,14 +632,19 @@ export interface FileRoutesByFullPath {
   '/affiliate-manager': typeof AffiliateManagerRoute
   '/billing-manager': typeof BillingManagerRoute
   '/crm-manager': typeof CrmManagerRoute
+  '/demo-manager': typeof DemoManagerRoute
   '/franchise-manager': typeof FranchiseManagerRoute
   '/influencer-manager': typeof InfluencerManagerRoute
   '/lead-manager': typeof LeadManagerRoute
+  '/license-manager': typeof LicenseManagerRoute
+  '/marketing-manager': typeof MarketingManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/order-manager': typeof OrderManagerRoute
   '/reseller-manager': typeof ResellerManagerRoute
   '/seo-manager': typeof SeoManagerRoute
+  '/subscription-manager': typeof SubscriptionManagerRoute
+  '/ticket-manager': typeof TicketManagerRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
   '/ai': typeof AuthenticatedAiRoute
@@ -693,14 +728,19 @@ export interface FileRoutesByTo {
   '/affiliate-manager': typeof AffiliateManagerRoute
   '/billing-manager': typeof BillingManagerRoute
   '/crm-manager': typeof CrmManagerRoute
+  '/demo-manager': typeof DemoManagerRoute
   '/franchise-manager': typeof FranchiseManagerRoute
   '/influencer-manager': typeof InfluencerManagerRoute
   '/lead-manager': typeof LeadManagerRoute
+  '/license-manager': typeof LicenseManagerRoute
+  '/marketing-manager': typeof MarketingManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/order-manager': typeof OrderManagerRoute
   '/reseller-manager': typeof ResellerManagerRoute
   '/seo-manager': typeof SeoManagerRoute
+  '/subscription-manager': typeof SubscriptionManagerRoute
+  '/ticket-manager': typeof TicketManagerRoute
   '/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/achievements': typeof AuthenticatedAchievementsRoute
   '/ai': typeof AuthenticatedAiRoute
@@ -785,14 +825,19 @@ export interface FileRoutesById {
   '/affiliate-manager': typeof AffiliateManagerRoute
   '/billing-manager': typeof BillingManagerRoute
   '/crm-manager': typeof CrmManagerRoute
+  '/demo-manager': typeof DemoManagerRoute
   '/franchise-manager': typeof FranchiseManagerRoute
   '/influencer-manager': typeof InfluencerManagerRoute
   '/lead-manager': typeof LeadManagerRoute
+  '/license-manager': typeof LicenseManagerRoute
+  '/marketing-manager': typeof MarketingManagerRoute
   '/marketplace-manager': typeof MarketplaceManagerRoute
   '/module-switch': typeof ModuleSwitchRoute
   '/order-manager': typeof OrderManagerRoute
   '/reseller-manager': typeof ResellerManagerRoute
   '/seo-manager': typeof SeoManagerRoute
+  '/subscription-manager': typeof SubscriptionManagerRoute
+  '/ticket-manager': typeof TicketManagerRoute
   '/_authenticated/achievement-vault': typeof AuthenticatedAchievementVaultRoute
   '/_authenticated/achievements': typeof AuthenticatedAchievementsRoute
   '/_authenticated/ai': typeof AuthenticatedAiRoute
@@ -878,14 +923,19 @@ export interface FileRouteTypes {
     | '/affiliate-manager'
     | '/billing-manager'
     | '/crm-manager'
+    | '/demo-manager'
     | '/franchise-manager'
     | '/influencer-manager'
     | '/lead-manager'
+    | '/license-manager'
+    | '/marketing-manager'
     | '/marketplace-manager'
     | '/module-switch'
     | '/order-manager'
     | '/reseller-manager'
     | '/seo-manager'
+    | '/subscription-manager'
+    | '/ticket-manager'
     | '/achievement-vault'
     | '/achievements'
     | '/ai'
@@ -969,14 +1019,19 @@ export interface FileRouteTypes {
     | '/affiliate-manager'
     | '/billing-manager'
     | '/crm-manager'
+    | '/demo-manager'
     | '/franchise-manager'
     | '/influencer-manager'
     | '/lead-manager'
+    | '/license-manager'
+    | '/marketing-manager'
     | '/marketplace-manager'
     | '/module-switch'
     | '/order-manager'
     | '/reseller-manager'
     | '/seo-manager'
+    | '/subscription-manager'
+    | '/ticket-manager'
     | '/achievement-vault'
     | '/achievements'
     | '/ai'
@@ -1060,14 +1115,19 @@ export interface FileRouteTypes {
     | '/affiliate-manager'
     | '/billing-manager'
     | '/crm-manager'
+    | '/demo-manager'
     | '/franchise-manager'
     | '/influencer-manager'
     | '/lead-manager'
+    | '/license-manager'
+    | '/marketing-manager'
     | '/marketplace-manager'
     | '/module-switch'
     | '/order-manager'
     | '/reseller-manager'
     | '/seo-manager'
+    | '/subscription-manager'
+    | '/ticket-manager'
     | '/_authenticated/achievement-vault'
     | '/_authenticated/achievements'
     | '/_authenticated/ai'
@@ -1153,14 +1213,19 @@ export interface RootRouteChildren {
   AffiliateManagerRoute: typeof AffiliateManagerRoute
   BillingManagerRoute: typeof BillingManagerRoute
   CrmManagerRoute: typeof CrmManagerRoute
+  DemoManagerRoute: typeof DemoManagerRoute
   FranchiseManagerRoute: typeof FranchiseManagerRoute
   InfluencerManagerRoute: typeof InfluencerManagerRoute
   LeadManagerRoute: typeof LeadManagerRoute
+  LicenseManagerRoute: typeof LicenseManagerRoute
+  MarketingManagerRoute: typeof MarketingManagerRoute
   MarketplaceManagerRoute: typeof MarketplaceManagerRoute
   ModuleSwitchRoute: typeof ModuleSwitchRoute
   OrderManagerRoute: typeof OrderManagerRoute
   ResellerManagerRoute: typeof ResellerManagerRoute
   SeoManagerRoute: typeof SeoManagerRoute
+  SubscriptionManagerRoute: typeof SubscriptionManagerRoute
+  TicketManagerRoute: typeof TicketManagerRoute
   ApiChatRoute: typeof ApiChatRoute
   DashboardRoleRoute: typeof DashboardRoleRoute
   VerifyCodeRoute: typeof VerifyCodeRoute
@@ -1168,6 +1233,20 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/ticket-manager': {
+      id: '/ticket-manager'
+      path: '/ticket-manager'
+      fullPath: '/ticket-manager'
+      preLoaderRoute: typeof TicketManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/subscription-manager': {
+      id: '/subscription-manager'
+      path: '/subscription-manager'
+      fullPath: '/subscription-manager'
+      preLoaderRoute: typeof SubscriptionManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/seo-manager': {
       id: '/seo-manager'
       path: '/seo-manager'
@@ -1203,6 +1282,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceManagerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/marketing-manager': {
+      id: '/marketing-manager'
+      path: '/marketing-manager'
+      fullPath: '/marketing-manager'
+      preLoaderRoute: typeof MarketingManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/license-manager': {
+      id: '/license-manager'
+      path: '/license-manager'
+      fullPath: '/license-manager'
+      preLoaderRoute: typeof LicenseManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lead-manager': {
       id: '/lead-manager'
       path: '/lead-manager'
@@ -1222,6 +1315,13 @@ declare module '@tanstack/react-router' {
       path: '/franchise-manager'
       fullPath: '/franchise-manager'
       preLoaderRoute: typeof FranchiseManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo-manager': {
+      id: '/demo-manager'
+      path: '/demo-manager'
+      fullPath: '/demo-manager'
+      preLoaderRoute: typeof DemoManagerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/crm-manager': {
@@ -1993,14 +2093,19 @@ const rootRouteChildren: RootRouteChildren = {
   AffiliateManagerRoute: AffiliateManagerRoute,
   BillingManagerRoute: BillingManagerRoute,
   CrmManagerRoute: CrmManagerRoute,
+  DemoManagerRoute: DemoManagerRoute,
   FranchiseManagerRoute: FranchiseManagerRoute,
   InfluencerManagerRoute: InfluencerManagerRoute,
   LeadManagerRoute: LeadManagerRoute,
+  LicenseManagerRoute: LicenseManagerRoute,
+  MarketingManagerRoute: MarketingManagerRoute,
   MarketplaceManagerRoute: MarketplaceManagerRoute,
   ModuleSwitchRoute: ModuleSwitchRoute,
   OrderManagerRoute: OrderManagerRoute,
   ResellerManagerRoute: ResellerManagerRoute,
   SeoManagerRoute: SeoManagerRoute,
+  SubscriptionManagerRoute: SubscriptionManagerRoute,
+  TicketManagerRoute: TicketManagerRoute,
   ApiChatRoute: ApiChatRoute,
   DashboardRoleRoute: DashboardRoleRoute,
   VerifyCodeRoute: VerifyCodeRoute,

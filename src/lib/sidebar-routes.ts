@@ -23,6 +23,12 @@ export const SIDEBAR_ROUTES: Record<string, string> = {
   marketing_management: "/marketing-manager",
   seo_manager: "/seo-manager",
   lead_manager: "/lead-manager",
+  crm_manager: "/crm-manager",
+  order_manager: "/order-manager",
+  billing_manager: "/billing-manager",
+  subscription_manager: "/subscription-manager",
+  license_manager: "/license-manager",
+  ticket_manager: "/ticket-manager",
   sales_support_manager: "/sales-support-manager",
   customer_support_management: "/client-success",
   // GRADE 4
